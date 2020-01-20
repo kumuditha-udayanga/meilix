@@ -46,9 +46,9 @@ deploy:
   - provider: releases
     skip_cleanup: true
     api_key:
-      secure: "tVVKOMh0dZCrHkAfoqIYJYleJwTwXptumugYVcGi/WDaeFi9o1ROTKVdLXUO2CcAUgWUphWjnckF4uVdKBcCB87Af0hgQBXdpDJ4VSb2FFjjY3Lf5dpR1FTYR6Tqsn821mYM17wtwmO1tlg8zFqd1yysr36wZ0EqzFwBtV2FA0jNfxGtFyyJRZnDcCQqwREc2iIENSt8tE787HbwPaWGBEkpC8zYwNYkQXPgFvTi+Z/6Tnobz7gnk9wQFuzFDymr6sDTQF+2ycfGnJnXDOZjqC5haDZbXop6dR/ru6hwO6U4khQIFHEPMZEEHnocB1gOOSiM9Z/yztmY18X4jzx8gZAMIrdKwYlZzEeVAbnlX0WXfjOFmcKIvaMtdNZg9QJil3ePPq/80uNo4TGUy+04ll6jBqqMf4BTs/dxohLyksxN79iuAplRtEl96ZQG+0VI1B0OE3WjwtcuvcuTW7oZ1sOULY4UsNmIdPpJZqIrQpN4AevRJ6DV844uvJ63Sbdzyu0EjMTp+h+2dWiQnnW4aP0mbYsBGWTj0vM2CD/fHtM9W6oVNqLsF7pEe9fg7d2hYJS7Zkuwco33WHqy4JGvLl9uyzSsy0cueJgwg5DYJ8zWDzhlCbKtEk1kG+eKVj+C5rG4shOMK4zf+0iVn5BCNB5d3OgLpAGJwFx1uqqTMrc="
+      secure: "PCXu62Qjjop0/GVzINFwUJcXpltF/9ilB2OLA006HD1q1FVCIZe3QVClmyCnYkAAuq0Xs3kPoqXppkwmvuJzMwxdSZOLUG2uuSLIf5NI69vOwQd3zL35jZuKa7xzx224b/NnXeBLNy/0J8jCVvaSjgj0Af4V8Uw3TfPyjHEDsNdMAT8PNVnFqCxNvRm3Hg5FAHdABUbuJKYScRuysGgD1/LQmi26QKmEGDyE/QgLTO69HhB8Mzx0kuYaCzmlzYEA64PkBjiu9fUfdE1e5BvzkyiXaDlMRc8fy4v8cOxWBJw6rvettACrHoGRjlQpFAmm50IkZq2Ybm7D/SpLGBWCVfYOHehRwp6H29f1jBr70z6urmD9WkiojRmGeTaPJGZjnKBw7Rf7/0SQFrWm5x6kZ5AmkWyt5JUFFLvzW7hXEhtRw4b+5HF0/bgvUFBNmT6YzK0gwspeXDm2CkJZtTTzQVurv5wOml/f2QbagSeGbbz3L3JORmL7XlTPSMpoBJTNDaeWw4qMvvbVkEJ4B5PwvPNsywwLo8HVSkDq4I2KJrV+/A3Z8kEFBCcRgSnpvE1Hrt6sVmyRHgzjJ9scmjclpmWcnVuP4zohA6Ko9c1mwhbbRXBKI9PWFG1Wm0T8KNnd2qAEb4mR2MVuHzLjLGXvMr3cVE//r16Z//60uPFp/8w="
     file_glob: true # http://stackoverflow.com/a/28579635/1320237
-    file: 
+    file:
      - "/home/travis/${image_name}"
      - "/home/travis/log.txt"
     on:
@@ -57,6 +57,6 @@ deploy:
 after_deploy:
   - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then bash ./scripts/releases_maintainer.sh; fi'
   - cd scripts/mail-scripts && ./mail.py
-  
+
 after_failure:
   - cd scripts/mail-scripts && ./mail-fail.py
